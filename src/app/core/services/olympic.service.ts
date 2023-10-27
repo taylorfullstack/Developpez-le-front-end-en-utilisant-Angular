@@ -1,64 +1,73 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, of, tap } from 'rxjs';
+import { catchError} from 'rxjs/operators';
 import { Olympic } from '../models/Olympic';
-//import OLYMPICS from '../../../assets/mock/olympic.json';
 
 /**
  * @Injectable() decorator marks the class as one that participates in the dependency injection system
- */
-@Injectable({
-  providedIn: 'root',
-})
-
-/**
  * The OlympicService class is going to provide an injectable service, and it can also have its own injected dependencies.
  * It can be used to retrieve data from a web service, local storage, or a mock data source.
  *
  * The OlympicService class is going to retrieve the data from the mock data source.
  */
+@Injectable({
+  providedIn: 'root',
+})
 export class OlympicService {
   private olympicUrl = '../../../assets/mock/olympic.json';
-  private olympics$ = new BehaviorSubject<Olympic[] | null>(null);
+  private olympics: Olympic[] = [];
+
+  /**
+  * handleError pulled directly from the Angular docs:
+  * Handle Http operation that failed.
+  * Let the app continue.
+  *
+  * @param operation - name of the operation that failed
+  * @param result - optional value to return as the observable result
+  */
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 
   constructor(private http: HttpClient) {}
 
+  getOlympics(): Observable<Olympic[]> {
+    return this.http.get<Olympic[]>(this.olympicUrl)
+      .pipe(
+        tap((response) => {
+          this.olympics = response;
+          console.log("service get olympics value", response)
+        }),
+        catchError(this.handleError<Olympic[]>('getOlympics', []))
+        );
+    }
 
+  getOlympicById(id: number): Olympic {
+    const olympic = this.olympics.find((olympic) => olympic.id === id);
 
-  loadInitialData() {
-    /**
-     * The HttpClient.get() method returns an Observable that emits the response data as a JSON object.
-     * The HttpClient.get() method is asynchronous.
-     * It returns an Observable of type Olympic[].
-     * The HttpClient.get() method takes a single argument, the URL of the resource to be retrieved.
-     *
-     * The pipe() method is used to combine multiple RxJS operators into a single function.
-     *
-     * The tap() operator looks at the observable values, does something with those values, and passes them along.
-     *
-     * The catchError() operator intercepts an Observable that failed.
-     * The catchError() operator returns a new observable or throws an error.
-     *
-     * The next() method of the BehaviorSubject class is used to emit new values.
-     *
-    */
-    return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-      tap((value: Olympic[]) => {
-        console.log("value", value)
-        this.olympics$.next(value);
-      }),
-      catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.next(null);
-        return caught;
-      })
-    );
+    if(!olympic){
+      throw new Error('olympic not found!')
+    } else {
+      //console.log("olympic", olympic)
+      return olympic;
+    }
   }
 
-  getOlympics() {
-    return this.olympics$.asObservable();
-  }
+  getTotalMedalsByCountryId(id: number): number{
+    const olympic = this.getOlympicById(id);
+    //console.log("olympic", olympic)
+    return olympic.participations.reduce((total, participation) => total + participation.medalsCount, 0);
+  };
 }
