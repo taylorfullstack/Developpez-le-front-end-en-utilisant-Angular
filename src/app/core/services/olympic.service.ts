@@ -70,4 +70,10 @@ export class OlympicService {
     //console.log("olympic", olympic)
     return olympic.participations.reduce((total, participation) => total + participation.medalsCount, 0);
   };
+
+  getTotalAthletesByCountryId(id: number): number{
+    const olympic = this.getOlympicById(id);
+    //console.log("olympic", olympic)
+    return olympic.participations.reduce((total, participation) => total + participation.athleteCount, 0);
+  };
 }
