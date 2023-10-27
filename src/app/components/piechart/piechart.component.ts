@@ -110,11 +110,6 @@ export class PiechartComponent implements OnInit{
 
               const text = document.createTextNode(body);
 
-              console.log('text', text)
-              console.log('span', span)
-              console.log('td', td)
-              console.log('td', tr)
-
               td.appendChild(span);
               td.appendChild(text);
               tr.appendChild(td);
