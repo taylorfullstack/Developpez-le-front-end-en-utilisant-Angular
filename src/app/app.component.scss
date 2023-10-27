@@ -11,7 +11,7 @@ body {
 }
 
 header, main {
-  width: min(70ch, 100% - 4rem);
+  padding-inline: 1rem;
   margin-inline: auto;
 }
 
