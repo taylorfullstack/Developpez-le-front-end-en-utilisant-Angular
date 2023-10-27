@@ -12,10 +12,11 @@ import { CountryPieSliceComponent } from './components/country-pie-slice/country
 import { HeaderComponent } from './components/header/header.component';
 import { StatsCardComponent } from './components/stats-card/stats-card.component';
 import { PiechartComponent } from './components/piechart/piechart.component';
-
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+//import { OlympicService } from './core/services/olympic.service';
+import { routes } from './app-routing.module';
 
 @NgModule({
-
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -32,7 +33,7 @@ import { PiechartComponent } from './components/piechart/piechart.component';
     StatsCardComponent,
     PiechartComponent
   ],
-  providers: [],
+  providers: [provideRouter(routes, withComponentInputBinding()),],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
