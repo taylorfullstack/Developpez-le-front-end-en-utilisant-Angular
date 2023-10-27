@@ -3,7 +3,10 @@
 </nav>
 <main>
   <h1>{{country.country}}</h1>
-  <p>Number of entries <strong>{{country.participations.length}}</strong></p>
-  <p>Total number of medals <strong>{{ totalMedals }}</strong></p>
-  <p>Total number of athletes <strong>{{country.participations.at(-1)?.athleteCount}}</strong></p>
+  <div class="stats-container">
+    <app-stats-card title="Number of entries" [value]="country.participations.length"></app-stats-card>
+    <app-stats-card title="Total number of medals" [value]="totalMedals"></app-stats-card>
+    <app-stats-card title="Total number of athletes" [value]="athletes"></app-stats-card>
+  </div>
+  <app-line-chart [participations]="country.participations"></app-line-chart>
 </main>

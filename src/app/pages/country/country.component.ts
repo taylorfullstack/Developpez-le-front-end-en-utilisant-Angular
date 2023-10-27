@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { ActivatedRoute } from '@angular/router';
+import { Participation } from 'src/app/core/models/Participation';
 
 @Component({
   selector: 'app-country',
@@ -11,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class CountryComponent{
   country!: Olympic;
   totalMedals!: number;
+  participations!: Participation[];
+  athletes!: number;
 
   constructor(private olympicService: OlympicService, private route: ActivatedRoute) {}
 
@@ -18,6 +21,8 @@ export class CountryComponent{
     const countryId = +this.route.snapshot.params['id'];
     this.country = this.olympicService.getOlympicById(countryId);
     this.totalMedals = this.olympicService.getTotalMedalsByCountryId(countryId);
+    this.athletes = this.olympicService.getTotalAthletesByCountryId(countryId);
+    this.participations = this.country.participations;
   }
 
   /**
