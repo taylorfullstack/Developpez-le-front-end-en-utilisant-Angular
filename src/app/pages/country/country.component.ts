@@ -19,4 +19,17 @@ export class CountryComponent{
     this.country = this.olympicService.getOlympicById(countryId);
     this.totalMedals = this.olympicService.getTotalMedalsByCountryId(countryId);
   }
+
+  /**
+   * Navigate to home page when clicking on the back to home button
+   *
+   * This function was added in order to try to address the issue of the pie chart not renderingafter navigating back to home from the country page.
+   *
+   * TODO: Continue to Investigate why the chart is not rendering on the home page after navigating back to it from the country page.
+   *
+   * Issue #1
+  */
+  navigateToHome() {
+    window.location.href = '';
+  }
 }
