@@ -15,6 +15,7 @@ import { PiechartComponent } from './components/piechart/piechart.component';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 //import { OlympicService } from './core/services/olympic.service';
 import { routes } from './app-routing.module';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { routes } from './app-routing.module';
     HeaderComponent,
     CountryPieSliceComponent,
     StatsCardComponent,
-    PiechartComponent
+    PiechartComponent,
+    LineChartComponent
   ],
   providers: [provideRouter(routes, withComponentInputBinding()),],
   bootstrap: [AppComponent],
