@@ -1,0 +1,13 @@
+.card {
+  border: 2px solid #04838f;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1rem;
+  padding-block: .5rem;
+  & span{
+    color: gray;
+  }
+}
