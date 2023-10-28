@@ -58,9 +58,9 @@ export class PiechartComponent implements OnInit{
     externalTooltipHandler = (context: { chart: Chart; tooltip: TooltipModel<'pie'>; }) => {
       // Tooltip Element
       const {chart, tooltip} = context;
-      console.log('context', context)
-      console.log('chart', chart)
-      console.log('tooltip', tooltip)
+      //console.log('context', context)
+      //console.log('chart', chart)
+      //console.log('tooltip', tooltip)
       const tooltipEl = this.getOrCreateTooltip(chart);
 
       // Hide if no tooltip
