@@ -22,7 +22,7 @@ export class PiechartComponent implements OnInit{
       if(pieChartCanvas instanceof HTMLCanvasElement) {
         this.chartElement = pieChartCanvas;
         this.renderChart();
-        //this.chart.update("resize");
+        //this.chart.update("resize"); //attempt to address Issue #1 - doesn't resolve
       };
     }
 
