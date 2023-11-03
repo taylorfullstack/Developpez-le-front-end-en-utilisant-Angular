@@ -1,14 +1,16 @@
 <main>
   <h1>Medals per country</h1>
-  <hr />
   <app-piechart
   [labels]="labels"
   [medals]="medals"
   ></app-piechart>
 
-  <app-country-pie-slice
+  <div class="quick-links">
+    <app-country-pie-slice
   *ngFor="let country of olympics$"
   [country]="country"
   routerLink="/{{country.id}}">
-</app-country-pie-slice>
+  </app-country-pie-slice>
+  </div>
+
 </main>
