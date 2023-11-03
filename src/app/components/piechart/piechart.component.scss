@@ -1,8 +1,12 @@
-.chart-container {
+.pie-chart-container {
   position: relative;
-  margin-inline: auto;
+  margin: auto;
   height: 80vh;
-  width: 80vw;
-  display: flex;
-  justify-content: center;
+  width: auto;
+  //display: flex;
+  //justify-content: center;
+}
+
+#pie-chart {
+  margin-inline: auto;
 }
