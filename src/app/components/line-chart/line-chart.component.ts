@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Participation } from 'src/app/core/models/Participation';
+import { externalTooltipHandler } from 'src/app/core/utils/tooltip';
 
 @Component({
   selector: 'app-line-chart',
@@ -63,6 +64,20 @@ export class LineChartComponent {
             beginAtZero: true,
           }
         },
+        plugins: {
+          tooltip: {
+            enabled: false,
+            external: externalTooltipHandler,
+            callbacks: {
+              title: function(context) {
+                return context[0].label;
+              },
+              label: function(context) {
+                return context.formattedValue;
+              },
+            },
+          },
+      },
       }
     });
   }
