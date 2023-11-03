@@ -16,7 +16,6 @@ header, main {
 }
 
 img,
-svg,
 video {
   max-width: 100%;
   display: block;
@@ -24,9 +23,36 @@ video {
 
 h1 {
   text-align: center;
-  font-size: clamp(2rem, 1rem + 10vw, 4rem);
+  font-size: clamp(2rem, 1rem + 10vw, 3rem);
+  margin: 0;
 }
 
 a {
   text-decoration: none;
+}
+
+.pie-chart-container .tooltip:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 10px 10px;
+  border-color: transparent transparent #04838f transparent;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.line-chart-container .tooltip:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 10px 10px;
+  border-color: #04838f transparent transparent transparent;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }

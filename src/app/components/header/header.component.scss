@@ -3,8 +3,12 @@ header {
   justify-content: center;
   background-color: black;
   padding-block: 1rem;
+  //min-height: 10vh;
+  //max-height: 20vh;
+  height: 100px;
 }
 
 img {
   border-radius: 4px;
+  object-fit: cover;
 }
