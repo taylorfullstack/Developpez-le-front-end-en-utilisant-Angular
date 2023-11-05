@@ -1,6 +1,6 @@
-/*html {
-  color-scheme: light dark;
-}*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -8,6 +8,9 @@ body {
   font-size: 1.125rem;
   margin: 0;
   padding: 0;
+  --border-radius: 8px;
+  --color-primary: 185, 95%, 29%;
+  --color-gray: 180, 8%, 33%;
 }
 
 header, main {
@@ -24,11 +27,25 @@ video {
 h1 {
   text-align: center;
   font-size: clamp(2rem, 1rem + 10vw, 3rem);
-  margin: 0;
+  background-color: hsl(var(--color-primary));
+  color: white;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  width: max-content;
+  padding-inline: 3rem;
+  margin-inline: auto;
 }
 
 a {
   text-decoration: none;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-block: 1rem;
+  flex-wrap: wrap;
 }
 
 .pie-chart-container .tooltip:before {
@@ -37,7 +54,7 @@ a {
   height: 0;
   border-style: solid;
   border-width: 10px 10px 10px 10px;
-  border-color: transparent transparent #04838f transparent;
+  border-color: transparent transparent hsl(var(--color-primary)) transparent;
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -50,7 +67,7 @@ a {
   height: 0;
   border-style: solid;
   border-width: 10px 10px 10px 10px;
-  border-color: #04838f transparent transparent transparent;
+  border-color: hsl(var(--color-primary)) transparent transparent transparent;
   position: absolute;
   top: 100%;
   left: 50%;
