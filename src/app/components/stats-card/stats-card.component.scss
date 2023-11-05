@@ -1,6 +1,6 @@
 .card {
-  border: 2px solid #04838f;
-  border-radius: 8px;
+  border: 2px solid hsl(var(--color-primary));
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,6 +9,6 @@
   padding-block: .5rem;
   text-align: center;
   & span{
-    color: gray;
+    color: hsla(var(--color-gray), 1);
   }
 }
