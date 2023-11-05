@@ -1,6 +1,14 @@
-.line-chart-container{
+.line-chart-container {
   position: relative;
   margin: auto;
-  height: 80vh;
-  width: auto;
+  height: 60vh;
+  width: 60vw;
+  @media screen and (max-width: 768px) {
+    height: 50vh;
+    width: 50vw;
+  }
+}
+
+#line-chart {
+  margin-inline: auto;
 }
