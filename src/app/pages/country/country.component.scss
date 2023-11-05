@@ -3,17 +3,3 @@ nav {
   width: max-content;
   margin-inline: auto;
 }
-
-a {
-  background-color: hsla(var(--color-primary), 0.5);
-  color: black;
-  border: solid 2px hsla(var(--color-primary), 1);
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  background-color: hsla(var(--color-primary), 1);
-  color: white;
-}
