@@ -6,11 +6,12 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   {
-    path: ':id', // country id
+    path: 'olympic/:id', // country id
     component: CountryComponent,
   },
   {
     path: '', // default route
+    pathMatch: 'full',
     component: HomeComponent,
   },
   {
