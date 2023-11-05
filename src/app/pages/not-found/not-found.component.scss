@@ -1,8 +1,10 @@
-.center {
-  width: 100vw;
-  height: 100vh;
+.page-404 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  & h1 {
+    background-color: unset;
+    color: black;
+  }
 }
