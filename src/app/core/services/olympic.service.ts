@@ -29,13 +29,8 @@ export class OlympicService {
   */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
@@ -48,7 +43,6 @@ export class OlympicService {
       .pipe(
         tap((response) => {
           this.olympics = response;
-          console.log("service get olympics value", response)
         }),
         catchError(this.handleError<Olympic[]>('getOlympics', []))
         );
@@ -56,24 +50,20 @@ export class OlympicService {
 
   getOlympicById(id: number): Olympic {
     const olympic = this.olympics.find((olympic) => olympic.id === id);
-
     if(!olympic){
       throw new Error('olympic not found!')
     } else {
-      //console.log("olympic", olympic)
       return olympic;
     }
   }
 
   getTotalMedalsByCountryId(id: number): number{
     const olympic = this.getOlympicById(id);
-    //console.log("olympic", olympic)
     return olympic.participations.reduce((total, participation) => total + participation.medalsCount, 0);
   };
 
   getTotalAthletesByCountryId(id: number): number{
     const olympic = this.getOlympicById(id);
-    //console.log("olympic", olympic)
     return olympic.participations.reduce((total, participation) => total + participation.athleteCount, 0);
   };
 }
