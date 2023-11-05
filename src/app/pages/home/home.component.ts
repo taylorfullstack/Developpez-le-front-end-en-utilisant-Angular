@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { ActivatedRoute } from '@angular/router';
@@ -8,29 +8,30 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
   olympics$!: Olympic[];
   labels: string[] = [];
   medals: number[] = [];
+  totalGames!: number;
+  totalCountries!: number;
 
   constructor(private olympicService: OlympicService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.getChartData();
-    //console.log("route", this.route);
   }
 
   getChartData(): void {
     this.olympicService.getOlympics().subscribe(olympics => {
       this.olympics$ = olympics;
-      //console.log("olympics", this.olympics$);
+      this.totalCountries = this.olympics$.length;
+      const uniqueYears = [...new Set(this.olympics$.flatMap(item => item.participations.map(p => p.year)))];
+      this.totalGames = uniqueYears.length;
       this.olympics$.forEach(country => {
         this.labels.push(country.country);
         this.medals.push(this.olympicService?.getTotalMedalsByCountryId(country.id));
       });
-      //console.log("labels", this.labels);
-      //console.log("medals", this.medals);
     });
   }
 }
