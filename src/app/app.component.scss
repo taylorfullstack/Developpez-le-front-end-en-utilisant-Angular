@@ -26,18 +26,35 @@ video {
 
 h1 {
   text-align: center;
-  font-size: clamp(2rem, 1rem + 10vw, 3rem);
+  font-size: 3rem;
   background-color: hsl(var(--color-primary));
   color: white;
   border-radius: var(--border-radius);
-  font-weight: 500;
-  width: max-content;
+  font-weight: 400;
+  max-width: max-content;
   padding-inline: 3rem;
   margin-inline: auto;
+  //display: flex;
+  //flex-wrap: wrap;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+    padding-inline: 2rem;
+  }
 }
 
 a {
   text-decoration: none;
+  background-color: hsla(var(--color-primary), 0.5);
+  color: black;
+  border: solid 2px hsla(var(--color-primary), 1);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  background-color: hsla(var(--color-primary), 1);
+  color: white;
 }
 
 .stats-container {
