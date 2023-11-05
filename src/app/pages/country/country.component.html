@@ -1,8 +1,8 @@
-<nav>
-  <button type="button" (click)="navigateToHome()">Back to Home</button>
-</nav>
-<main>
-  <h1>{{country.country}}</h1>
+<main *ngIf="olympics$">
+    <nav>
+      <a routerLink="">Back to Home</a>
+    </nav>
+    <h1>{{country.country}}</h1>
   <div class="stats-container">
     <app-stats-card title="Number of entries" [value]="country.participations.length"></app-stats-card>
     <app-stats-card title="Total number of medals" [value]="totalMedals"></app-stats-card>
