@@ -12,8 +12,7 @@ import { externalTooltipHandler } from 'src/app/core/utils/tooltip';
 export class PiechartComponent implements OnInit {
     @Input({ required: true }) labels!: string[];
     @Input({ required: true }) medals!: number[];
-    chartElement!: HTMLCanvasElement;
-    chart!: Chart<'pie'>;
+
     accessibleColorPalette = ["#A8385D", "#7AA3E5", "#A27EA8", "#A6E9F4", "#ADCDED", "#A95963" ]
 
     constructor(private router: Router) {}
@@ -21,13 +20,12 @@ export class PiechartComponent implements OnInit {
     ngOnInit(): void {
       const pieChartCanvas = document.getElementById('pie-chart');
       if(pieChartCanvas instanceof HTMLCanvasElement) {
-        this.chartElement = pieChartCanvas;
-        this.renderChart();
+        this.renderChart(pieChartCanvas);
       };
     }
 
-    renderChart(){
-      this.chart = new Chart(this.chartElement, {
+    renderChart(chartElement: HTMLCanvasElement){
+      new Chart(chartElement, {
         type: 'pie',
         data: {
           labels: this.labels,
