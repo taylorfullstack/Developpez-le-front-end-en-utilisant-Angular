@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Participation } from 'src/app/core/models/Participation';
 import { externalTooltipHandler } from 'src/app/core/utils/tooltip';
@@ -8,7 +8,7 @@ import { externalTooltipHandler } from 'src/app/core/utils/tooltip';
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss']
 })
-export class LineChartComponent {
+export class LineChartComponent implements OnInit{
   @Input({ required: true }) participations!: Participation[];
 
   ngOnInit(): void {
@@ -21,6 +21,15 @@ export class LineChartComponent {
     }
   }
 
+  /**
+   * @method renderChart
+   * @description
+   * Render the bar chart using the Chart.js library
+   *
+   * @param years the olympic games years to display on the x-axis
+   * @param medals the medals to display on the y-axis
+   * @param chartElement the canvas element to render the chart
+   */
   renderChart(years: number[], medals: number[], chartElement: HTMLCanvasElement) {
     new Chart(chartElement, {
       type: 'bar',
@@ -68,6 +77,9 @@ export class LineChartComponent {
                 return context.formattedValue;
               },
             },
+          },
+          legend: {
+            display: false,
           },
         },
       }
