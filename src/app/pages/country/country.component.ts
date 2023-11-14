@@ -3,6 +3,7 @@ import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Participation } from 'src/app/core/models/Participation';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-country',
@@ -16,6 +17,7 @@ export class CountryComponent implements OnInit{
   participations!: Participation[];
   athletes!: number;
   countryId!: number;
+  subscription: Subscription | undefined;
 
   constructor(private olympicService: OlympicService, private route: ActivatedRoute,  private router: Router) {}
 
@@ -25,8 +27,15 @@ export class CountryComponent implements OnInit{
     this.getLineChartData(+id);
   }
 
+  /**
+   * @method getLineChartData
+   * @description
+   * Get the data for the line chart by subscribing to the observable returned by the getOlympics() method of the OlympicService
+   * @param countryId - the numeric id of the olympic country
+   *
+   */
   getLineChartData(countryId: number): void {
-    this.olympicService.getOlympics().subscribe(olympics => {
+    this.subscription = this.olympicService.getOlympics().subscribe(olympics => {
       this.olympics$ = olympics;
       try {
         this.country = this.olympicService.getOlympicById(countryId);
@@ -37,5 +46,17 @@ export class CountryComponent implements OnInit{
         this.router.navigate(['**']);
       }
     });
+  }
+
+  /**
+   * @method ngOnDestroy
+   * @description
+   * Unsubscribe from the observable
+   * @returns void
+   */
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
