@@ -1,14 +1,10 @@
 .pie-chart-container {
   position: relative;
   margin: auto;
-  height: 65vh;
-  width: 65vw;
+  height: 500px;
+  width: 500px;
   @media screen and (max-width: 768px) {
-    height: 85vh;
-    width: 85vw;
+    height: 300px;
+    width: 300px;
   }
-}
-
-#pie-chart {
-  margin-inline: auto;
 }

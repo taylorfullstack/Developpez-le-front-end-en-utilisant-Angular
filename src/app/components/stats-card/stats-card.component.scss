@@ -8,6 +8,8 @@
   padding-inline: 1rem;
   padding-block: .5rem;
   text-align: center;
+  width: -moz-fit-content;
+  width: fit-content;
   & span{
     color: hsla(var(--color-gray), 1);
   }
