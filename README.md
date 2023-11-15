@@ -2,7 +2,7 @@
 ![telesport](https://github.com/taylorfullstack/Developpez-le-front-end-en-utilisant-Angular/assets/76629753/2626a621-70b6-4ad7-82c0-15b3317e40f9)
 
 
-[TéléSport Live Demo]([https://github.com/angular/angular-cli](https://developpez-le-front-end-en-utilisant-angular.vercel.app/)
+[TéléSport Live Demo](https://developpez-le-front-end-en-utilisant-angular.vercel.app/)
 
 ## Description
 
