@@ -1,6 +1,9 @@
 {
-  "name": "olympic-games-starter",
-  "version": "0.0.0",
+  "name": "Telesport",
+  "version": "1.0.0",
+  "author": {
+    "name": "Heather Taylor"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
