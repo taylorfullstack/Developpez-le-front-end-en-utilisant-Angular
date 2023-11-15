@@ -33,7 +33,7 @@ TéléSport is a new interactive web application to prepare for the next Olympic
     cd forked-repository-name
     ```
 
-- In your terminal, run the command below. The dot "." at the end of tthe command will clone the project into the current directory.
+- In your terminal, run the command below. The dot "." at the end of the command will clone the project into the current directory.
 
     ```bash
     git clone https://github.com/your-username/forked-repository-name.git .
