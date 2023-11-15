@@ -1,29 +1,70 @@
-# OlympicGamesStarter
+# TéléSport
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+[TéléSport Live Demo]([https://github.com/angular/angular-cli](https://developpez-le-front-end-en-utilisant-angular.vercel.app/)
 
-Don't forget to install your node_modules before starting (`npm install`).
+## Description
 
-## Development server
+TéléSport is a new interactive web application to prepare for the next Olympic Games, brought to you by the TéléSport television channel.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Installation
 
-## Build
+### Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Visual Studio Code](https://code.visualstudio.com/) (or your preferred code editor or IDE)
+- [Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
+- [NodeJS (**version 20.9.0 - LTS**)](https://nodejs.org/en/) - includes NPM 10.1.0
+- [NPM (**version 10.1.0**)](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-## Where to start
+### Install and launch the application
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+#### 1. Fork this repository
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+- Click on the fork button in the top right corner of the [repository](https://github.com/taylorfullstack/Developpez-le-front-end-en-utilisant-Angular) page on GitHub.
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+#### 2. Clone the forked respository to your local machine
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+- Replace the url below with the url of your forked repository.
 
-You're now ready to implement the requested features.
+    `https://github.com/your-username/forked-repository-name.git`
 
-Good luck!
+- Open a terminal window and navigate to the directory that will store your project.
+
+    ```bash
+    cd forked-repository-name
+    ```
+
+- In your terminal, run the command below. The dot "." at the end of tthe command will clone the project into the current directory.
+
+    ```bash
+    git clone https://github.com/your-username/forked-repository-name.git .
+    ```
+
+#### 3. Install the dependencies
+
+- In your terminal, run the commands below to install the dependencies listed in the package.json file.
+
+    ```bash
+    npm install
+    ```
+
+#### 4. Launch the application
+
+- In your terminal, run the command below to launch the development server.
+
+    ```bash
+    ng serve
+    ```
+
+    The application will launch in your browser at `http://localhost:4200`.
+
+    The application will automatically reload if you change any of the source files.
+
+#### 5. Build the application
+
+- In your terminal, run the command below to build the application for production.
+
+    ```bash
+    ng build
+    ```
+    
+    The build artifacts will be stored in the `dist/` directory.
