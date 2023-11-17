@@ -30,8 +30,9 @@ export class PiechartComponent implements OnInit {
      * Render the pie chart using the Chart.js library
      *
      * @param chartElement the canvas element to render the chart
+     * @returns void
      */
-    renderChart(chartElement: HTMLCanvasElement){
+    renderChart(chartElement: HTMLCanvasElement): void {
       new Chart(chartElement, {
         type: 'pie',
         data: {

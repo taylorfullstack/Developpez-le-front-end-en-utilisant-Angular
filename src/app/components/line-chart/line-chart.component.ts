@@ -29,8 +29,9 @@ export class LineChartComponent implements OnInit{
    * @param years the olympic games years to display on the x-axis
    * @param medals the medals to display on the y-axis
    * @param chartElement the canvas element to render the chart
+   * @returns void
    */
-  renderChart(years: number[], medals: number[], chartElement: HTMLCanvasElement) {
+  renderChart(years: number[], medals: number[], chartElement: HTMLCanvasElement): void {
     new Chart(chartElement, {
       type: 'bar',
       data: {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { ActivatedRoute, Router} from '@angular/router';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.scss']
 })
-export class CountryComponent implements OnInit{
+export class CountryComponent implements OnInit, OnDestroy{
   olympics$!: Olympic[];
   country!: Olympic;
   totalMedals!: number;
@@ -32,6 +32,7 @@ export class CountryComponent implements OnInit{
    * @description
    * Get the data for the line chart by subscribing to the observable returned by the getOlympics() method of the OlympicService
    * @param countryId - the numeric id of the olympic country
+   * @returns void
    *
    */
   getLineChartData(countryId: number): void {
